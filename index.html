@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MarketOne — Redefining the Marketplace</title>
+  <title>MarketBauras | Elektronikos Pasaulis</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
     :root {
-      --black: #000;
-      --white: #fff;
-      --gray: #8a8a8a;
-      --light-gray: #f5f5f7;
-      --accent: #0071e3;
-      --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      --primary: #0071e3;
+      --dark: #0b0d17;
+      --light: #ffffff;
+      --gray: #888;
+      --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.6;
+      background-color: var(--dark);
+      color: var(--light);
       overflow-x: hidden;
     }
 
@@ -34,23 +32,27 @@
       position: fixed;
       top: 0;
       width: 100%;
+      padding: 18px 70px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 80px;
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(15px);
+      background: rgba(10,10,10,0.6);
+      backdrop-filter: blur(10px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: var(--transition);
     }
 
     header h1 {
-      font-weight: 600;
-      letter-spacing: -0.5px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: -1px;
+      background: linear-gradient(90deg, #00b4ff, #0071e3);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     nav a {
-      color: var(--black);
+      color: var(--light);
       text-decoration: none;
       margin-left: 30px;
       font-weight: 500;
@@ -58,9 +60,10 @@
     }
 
     nav a:hover {
-      color: var(--accent);
+      color: var(--primary);
     }
 
+    /* HERO */
     .hero {
       height: 100vh;
       display: flex;
@@ -69,178 +72,184 @@
       align-items: center;
       text-align: center;
       padding: 0 20px;
-      background: linear-gradient(180deg, #fafafa 0%, #f0f0f2 100%);
+      background: linear-gradient(180deg, #0b0d17 0%, #111522 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,113,227,0.15), transparent 70%);
+      animation: spin 25s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .hero h2 {
       font-size: 3rem;
-      font-weight: 600;
-      letter-spacing: -1px;
+      max-width: 800px;
       margin-bottom: 20px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 1s forwards 0.3s;
+      z-index: 2;
     }
 
     .hero p {
       font-size: 1.2rem;
-      color: var(--gray);
+      color: #ccc;
       max-width: 600px;
       margin-bottom: 40px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 1s forwards 0.5s;
+      z-index: 2;
     }
 
     .hero a {
-      background: var(--black);
-      color: var(--white);
-      padding: 14px 35px;
-      border-radius: 50px;
+      background: var(--primary);
+      color: var(--light);
+      padding: 14px 40px;
+      border-radius: 40px;
       text-decoration: none;
-      font-weight: 500;
-      letter-spacing: 0.5px;
+      font-weight: 600;
       transition: var(--transition);
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 1s forwards 0.7s;
+      z-index: 2;
     }
 
     .hero a:hover {
-      background: var(--accent);
+      background: #00b4ff;
       transform: translateY(-3px);
     }
 
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
+    /* PRODUCTS */
     section {
       padding: 120px 80px;
       max-width: 1400px;
       margin: auto;
     }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 80px;
-      align-items: start;
-      margin-top: 60px;
+    h2.section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 60px;
     }
 
-    .feature {
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+    }
+
+    .product {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      transition: var(--transition);
+      transform: translateY(40px);
       opacity: 0;
-      transform: translateY(50px);
+    }
+
+    .product.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .product h3 {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .product p {
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+
+    .product span {
+      display: block;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .product a {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 25px;
+      border-radius: 30px;
+      text-decoration: none;
       transition: var(--transition);
     }
 
-    .feature.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .product a:hover {
+      background: #00b4ff;
+      transform: translateY(-3px);
     }
 
-    .feature h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .feature p {
-      color: var(--gray);
-      font-size: 1rem;
-    }
-
-    .split {
-      display: flex;
-      align-items: center;
-      gap: 60px;
-      flex-wrap: wrap;
-      margin-top: 100px;
-    }
-
-    .split img {
-      width: 100%;
-      max-width: 550px;
-      border-radius: 20px;
-      transition: transform 1s ease;
-    }
-
-    .split-content {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .split-content h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
-    }
-
-    .split-content p {
-      color: var(--gray);
-      font-size: 1.1rem;
-    }
-
+    /* CTA */
     .cta {
       text-align: center;
-      padding: 120px 40px;
-      background: var(--light-gray);
+      background: linear-gradient(90deg, #0071e3, #00b4ff);
+      color: #fff;
+      padding: 100px 30px;
+      border-radius: 40px;
+      margin-top: 120px;
     }
 
     .cta h2 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       margin-bottom: 15px;
-      letter-spacing: -0.5px;
     }
 
     .cta p {
-      color: var(--gray);
-      font-size: 1.1rem;
       margin-bottom: 30px;
+      font-size: 1.1rem;
     }
 
     .cta a {
-      background: var(--accent);
-      color: var(--white);
-      padding: 14px 40px;
-      border-radius: 40px;
+      background: #fff;
+      color: var(--primary);
       font-weight: 600;
+      padding: 14px 35px;
+      border-radius: 40px;
       text-decoration: none;
       transition: var(--transition);
     }
 
     .cta a:hover {
-      background: #0059c8;
+      background: #e6e6e6;
       transform: translateY(-3px);
     }
 
     footer {
       text-align: center;
-      color: var(--gray);
+      color: #888;
       font-size: 0.9rem;
-      padding: 50px 20px;
-      border-top: 1px solid rgba(0,0,0,0.05);
+      padding: 60px 20px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 120px;
     }
 
     @media (max-width: 768px) {
       header {
         padding: 15px 25px;
       }
-      .hero h2 {
-        font-size: 2.2rem;
-      }
       section {
         padding: 80px 25px;
       }
-      .split {
-        flex-direction: column;
-      }
-      .split img {
-        max-width: 100%;
+      .hero h2 {
+        font-size: 2rem;
       }
     }
   </style>
@@ -248,67 +257,69 @@
 
 <body>
   <header>
-    <h1>Vytautas MARKET-place</h1>
+    <h1>MarketBauras</h1>
     <nav>
-      <a href="#features">Features</a>
-      <a href="#story">Our Story</a>
-      <a href="#join">Join</a>
+      <a href="#produktai">Produktai</a>
+      <a href="#apie">Apie</a>
+      <a href="#kontaktai">Kontaktai</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Redefining the Marketplace Experience</h2>
-    <p>MarketOne blends design, performance, and trust — offering the world’s most intuitive platform for buyers and sellers.</p>
-    <a href="#join">Discover More</a>
+    <h2>Modernios Elektronikos Namai</h2>
+    <p>MarketBauras – vieta, kur technologijos susitinka su stiliumi. Rask naujausius kompiuterius, telefonus, ausines ir dar daugiau!</p>
+    <a href="#produktai">Naršyti prekes</a>
   </section>
 
-  <section id="features">
-    <h2>Built for Simplicity & Scale</h2>
-    <div class="features">
-      <div class="feature">
-        <h3>Seamless Transactions</h3>
-        <p>Every payment is encrypted, instant, and effortless — built on top-tier global infrastructure.</p>
+  <section id="produktai">
+    <h2 class="section-title">Populiariausi Produktai</h2>
+    <div class="products">
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Laptopas" />
+        <h3>MarketBook Pro 15"</h3>
+        <p>Galingas, plonas ir stilingas – tobula darbo mašina.</p>
+        <span>€1399</span>
+        <a href="#">Pirkti dabar</a>
       </div>
-      <div class="feature">
-        <h3>Unified Experience</h3>
-        <p>From browsing to checkout, every interaction feels natural, fast, and beautifully designed.</p>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80" alt="Telefonas" />
+        <h3>BaurasPhone X</h3>
+        <p>Greitas, elegantiškas ir pasiruošęs rytojui.</p>
+        <span>€899</span>
+        <a href="#">Pirkti dabar</a>
       </div>
-      <div class="feature">
-        <h3>Insightful Data</h3>
-        <p>Get intelligent insights that empower smarter decisions, faster growth, and better customer connections.</p>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=80" alt="Ausinės" />
+        <h3>AirBauras Max</h3>
+        <p>Krištolo skaidrumo garsas ir komfortas visai dienai.</p>
+        <span>€499</span>
+        <a href="#">Pirkti dabar</a>
       </div>
     </div>
   </section>
 
-  <section id="story" class="split">
-    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=80" alt="Marketplace preview" />
-    <div class="split-content">
-      <h2>Designed for Humans, Built for the Future</h2>
-      <p>Our mission is to build a marketplace that feels human — intuitive, reliable, and refined. Inspired by the world’s most iconic design philosophies, MarketOne is simplicity at scale.</p>
-    </div>
+  <section id="apie" class="cta">
+    <h2>Kodėl rinktis MarketBauras?</h2>
+    <p>Mes tikime, kad elektronika turi būti ne tik galinga, bet ir graži. Kiekvienas produktas kruopščiai atrinktas, kad patenkintų aukščiausius standartus.</p>
+    <a href="#kontaktai">Susisiekite su mumis</a>
   </section>
 
-  <section id="join" class="cta">
-    <h2>Join MarketOne Today</h2>
-    <p>Experience the next evolution of digital commerce.</p>
-    <a href="#">Get Started</a>
-  </section>
-
-  <footer>
-    &copy; 2025 MarketOne. All rights reserved.
+  <footer id="kontaktai">
+    <p>&copy; 2025 MarketBauras. Visos teisės saugomos.</p>
+    <p>El. paštas: <a href="mailto:info@marketbauras.lt" style="color:#00b4ff;">info@marketbauras.lt</a></p>
   </footer>
 
   <script>
-    // Fade in features on scroll
+    // Animacija kai pasirodo produktai
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.feature').forEach((f) => observer.observe(f));
+    document.querySelectorAll('.product').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
