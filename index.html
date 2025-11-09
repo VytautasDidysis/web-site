@@ -3,28 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neon Market | The Future of Commerce</title>
+  <title>MarketOne — Redefining the Marketplace</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
     :root {
-      --primary: #00eaff;
-      --secondary: #0078ff;
-      --bg-dark: #0a0f1c;
-      --text-light: #e0e0e0;
+      --black: #000;
+      --white: #fff;
+      --gray: #8a8a8a;
+      --light-gray: #f5f5f7;
+      --accent: #0071e3;
+      --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
 
     body {
-      background: radial-gradient(circle at 20% 20%, #111628, #05070f);
-      color: var(--text-light);
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
@@ -32,27 +34,23 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(15px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 80px;
+      padding: 18px 80px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(15px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     header h1 {
-      font-size: 1.8rem;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      color: transparent;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
     }
 
     nav a {
-      color: var(--text-light);
+      color: var(--black);
       text-decoration: none;
       margin-left: 30px;
       font-weight: 500;
@@ -60,242 +58,257 @@
     }
 
     nav a:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
 
     .hero {
       height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(0, 234, 255, 0.1));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0, 234, 255, 0.15), transparent 70%);
-      animation: rotate 20s linear infinite;
-      z-index: 0;
-    }
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      padding: 0 20px;
+      background: linear-gradient(180deg, #fafafa 0%, #f0f0f2 100%);
     }
 
     .hero h2 {
       font-size: 3rem;
-      background: linear-gradient(90deg, #00eaff, #0078ff);
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 15px;
-      z-index: 2;
-      text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+      font-weight: 600;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s forwards 0.3s;
     }
 
     .hero p {
       font-size: 1.2rem;
+      color: var(--gray);
       max-width: 600px;
-      color: #b8b8b8;
-      z-index: 2;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s forwards 0.5s;
     }
 
     .hero a {
-      display: inline-block;
-      padding: 12px 35px;
-      border-radius: 30px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: #fff;
+      background: var(--black);
+      color: var(--white);
+      padding: 14px 35px;
+      border-radius: 50px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       letter-spacing: 0.5px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      z-index: 2;
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s forwards 0.7s;
     }
 
     .hero a:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 25px var(--primary);
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     section {
-      padding: 100px 80px;
+      padding: 120px 80px;
+      max-width: 1400px;
+      margin: auto;
     }
 
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 80px;
+      align-items: start;
       margin-top: 60px;
     }
 
     .feature {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 15px;
-      padding: 40px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      position: relative;
-    }
-
-    .feature:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 25px rgba(0, 234, 255, 0.15);
-    }
-
-    .feature h3 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 1.4rem;
-    }
-
-    .feature p {
-      color: #aaa;
-      font-size: 1rem;
-    }
-
-    .cta {
-      text-align: center;
-      background: linear-gradient(90deg, rgba(0, 122, 255, 0.2), rgba(0, 234, 255, 0.1));
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .cta h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-      background: linear-gradient(90deg, #00eaff, #0078ff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .cta p {
-      color: #b8b8b8;
-      margin-bottom: 25px;
-    }
-
-    .cta a {
-      display: inline-block;
-      padding: 14px 40px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: #fff;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .cta a:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 25px var(--primary);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: #777;
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    /* Scroll animations */
-    .fade-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s ease-out;
+      transform: translateY(50px);
+      transition: var(--transition);
     }
 
-    .fade-up.visible {
+    .feature.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
+    .feature h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+
+    .split {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-top: 100px;
+    }
+
+    .split img {
+      width: 100%;
+      max-width: 550px;
+      border-radius: 20px;
+      transition: transform 1s ease;
+    }
+
+    .split-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .split-content h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .split-content p {
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 120px 40px;
+      background: var(--light-gray);
+    }
+
+    .cta h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .cta p {
+      color: var(--gray);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .cta a {
+      background: var(--accent);
+      color: var(--white);
+      padding: 14px 40px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .cta a:hover {
+      background: #0059c8;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+      padding: 50px 20px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
     @media (max-width: 768px) {
       header {
-        padding: 15px 30px;
+        padding: 15px 25px;
       }
-
-      section {
-        padding: 80px 30px;
-      }
-
       .hero h2 {
         font-size: 2.2rem;
+      }
+      section {
+        padding: 80px 25px;
+      }
+      .split {
+        flex-direction: column;
+      }
+      .split img {
+        max-width: 100%;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>NeonMarket</h1>
+    <h1>Vytautas MARKET-place</h1>
     <nav>
       <a href="#features">Features</a>
+      <a href="#story">Our Story</a>
       <a href="#join">Join</a>
-      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>The Future of Online Commerce</h2>
-    <p>Connect. Trade. Grow. A next-generation marketplace that empowers businesses and individuals through intelligent trading.</p>
-    <a href="#join">Explore Now</a>
+    <h2>Redefining the Marketplace Experience</h2>
+    <p>MarketOne blends design, performance, and trust — offering the world’s most intuitive platform for buyers and sellers.</p>
+    <a href="#join">Discover More</a>
   </section>
 
   <section id="features">
-    <h2 class="fade-up">Our Futuristic Features</h2>
+    <h2>Built for Simplicity & Scale</h2>
     <div class="features">
-      <div class="feature fade-up">
-        <h3>AI-Driven Insights</h3>
-        <p>Leverage advanced analytics to understand market trends and make smarter decisions instantly.</p>
+      <div class="feature">
+        <h3>Seamless Transactions</h3>
+        <p>Every payment is encrypted, instant, and effortless — built on top-tier global infrastructure.</p>
       </div>
-      <div class="feature fade-up">
-        <h3>Blockchain Security</h3>
-        <p>Experience secure, transparent, and tamper-proof transactions powered by decentralized technology.</p>
+      <div class="feature">
+        <h3>Unified Experience</h3>
+        <p>From browsing to checkout, every interaction feels natural, fast, and beautifully designed.</p>
       </div>
-      <div class="feature fade-up">
-        <h3>Immersive Interface</h3>
-        <p>A futuristic, responsive design that feels alive — built for humans and machines alike.</p>
+      <div class="feature">
+        <h3>Insightful Data</h3>
+        <p>Get intelligent insights that empower smarter decisions, faster growth, and better customer connections.</p>
       </div>
     </div>
   </section>
 
-  <section id="join" class="cta">
-    <h2 class="fade-up">Join the Revolution</h2>
-    <p class="fade-up">Be among the innovators shaping the future of digital trade and commerce.</p>
-    <a href="#" class="fade-up">Get Started</a>
+  <section id="story" class="split">
+    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=80" alt="Marketplace preview" />
+    <div class="split-content">
+      <h2>Designed for Humans, Built for the Future</h2>
+      <p>Our mission is to build a marketplace that feels human — intuitive, reliable, and refined. Inspired by the world’s most iconic design philosophies, MarketOne is simplicity at scale.</p>
+    </div>
   </section>
 
-  <footer id="contact">
-    <p>&copy; 2025 NeonMarket. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+  <section id="join" class="cta">
+    <h2>Join MarketOne Today</h2>
+    <p>Experience the next evolution of digital commerce.</p>
+    <a href="#">Get Started</a>
+  </section>
+
+  <footer>
+    &copy; 2025 MarketOne. All rights reserved.
   </footer>
 
   <script>
-    // Simple scroll animation
+    // Fade in features on scroll
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.3 });
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    document.querySelectorAll('.feature').forEach((f) => observer.observe(f));
   </script>
 </body>
 </html>
