@@ -1,16 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Market | The Future of Commerce</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    :root {
+      --primary: #00eaff;
+      --secondary: #0078ff;
+      --bg-dark: #0a0f1c;
+      --text-light: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 20%, #111628, #05070f);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(0, 234, 255, 0.1));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 234, 255, 0.15), transparent 70%);
+      animation: rotate 20s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #00eaff, #0078ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 15px;
+      z-index: 2;
+      text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      color: #b8b8b8;
+      z-index: 2;
+      margin-bottom: 30px;
+    }
+
+    .hero a {
+      display: inline-block;
+      padding: 12px 35px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 2;
+    }
+
+    .hero a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px var(--primary);
+    }
+
+    section {
+      padding: 100px 80px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 40px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(0, 234, 255, 0.15);
+    }
+
+    .feature h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .feature p {
+      color: #aaa;
+      font-size: 1rem;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(90deg, rgba(0, 122, 255, 0.2), rgba(0, 234, 255, 0.1));
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #00eaff, #0078ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .cta p {
+      color: #b8b8b8;
+      margin-bottom: 25px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 14px 40px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #fff;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .cta a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #777;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* Scroll animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-out;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 30px;
+      }
+
+      section {
+        padding: 80px 30px;
+      }
+
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div>
-        Blokas 1
+  <header>
+    <h1>NeonMarket</h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#join">Join</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>The Future of Online Commerce</h2>
+    <p>Connect. Trade. Grow. A next-generation marketplace that empowers businesses and individuals through intelligent trading.</p>
+    <a href="#join">Explore Now</a>
+  </section>
+
+  <section id="features">
+    <h2 class="fade-up">Our Futuristic Features</h2>
+    <div class="features">
+      <div class="feature fade-up">
+        <h3>AI-Driven Insights</h3>
+        <p>Leverage advanced analytics to understand market trends and make smarter decisions instantly.</p>
+      </div>
+      <div class="feature fade-up">
+        <h3>Blockchain Security</h3>
+        <p>Experience secure, transparent, and tamper-proof transactions powered by decentralized technology.</p>
+      </div>
+      <div class="feature fade-up">
+        <h3>Immersive Interface</h3>
+        <p>A futuristic, responsive design that feels alive — built for humans and machines alike.</p>
+      </div>
     </div>
-    <div>
-        Blokas 2 Sigma
-    </div>
+  </section>
+
+  <section id="join" class="cta">
+    <h2 class="fade-up">Join the Revolution</h2>
+    <p class="fade-up">Be among the innovators shaping the future of digital trade and commerce.</p>
+    <a href="#" class="fade-up">Get Started</a>
+  </section>
+
+  <footer id="contact">
+    <p>&copy; 2025 NeonMarket. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+  </footer>
+
+  <script>
+    // Simple scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
